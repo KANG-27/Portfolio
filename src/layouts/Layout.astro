@@ -1,9 +1,5 @@
 ---
-interface Props {
-  title: string;
-}
 
-const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -12,7 +8,6 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>portfolio</title>
   </head>
@@ -24,6 +19,12 @@ const { title } = Astro.props;
   :root {
     --color-text: #3c7ccf; /* Color predeterminado */
     --color-lines: #5978a0; /* Definición de otra variable si es necesario */
+  }
+
+  .line {
+    margin: 2% 0%;
+    width: 70%;
+    border: 1px solid var(--color-lines);
   }
 
   .color-text {

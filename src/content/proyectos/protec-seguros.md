@@ -3,12 +3,13 @@ name: Protec Seguros
 description: Este proyecto es una plataforma web de seguros desarrollada con Astro, orientada a ofrecer una interfaz rápida y eficiente para explorar diferentes tipos de seguros, incluyendo vida, salud, empresas, ARL, renta educativa, pensión, RC profesionales, movilidad y mascotas. El sitio está enfocado en brindar una experiencia fluida y fácil de usar para los usuarios, facilitando la consulta de servicios y la redirección a plataformas externas para la gestión de pagos.
 
 tecnologies: 
-    - name: Astro
-      description: Framework moderno para crear sitios rápidos y optimizados mediante un enfoque orientado a componentes con soporte para contenido estático e híbrido.
-    - name: TypeScript
-      description: Implementado para añadir tipado estático y asegurar la calidad del código.
-    - name: Figma
-      description: Utilizado para definir los diseños de UX/UI y facilitar la creación de interfaces centradas en la experiencia del usuario.
+    - image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/2048px-HTML5_logo_and_wordmark.svg.png"
+    - image: "https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/css3-512.png"
+    - image: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+    - image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb6-sFktxWY-Dm8H7HlRmrYnfruYPipHcVQw&s
+    - image: https://astro.build/assets/press/astro-icon-light-gradient.png
+    - image: "https://img.icons8.com/m_sharp/200/FFFFFF/github.png"
+    - image: https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg
 
 funcionality: 
     - name: Generación de contenido estático e híbrido 
@@ -20,5 +21,5 @@ funcionality:
     - name: Optimización SEO
       description: Astro facilita la optimización de SEO con carga rápida de páginas y soporte nativo para etiquetas meta.
 
-images: ""
+images: []
 ---

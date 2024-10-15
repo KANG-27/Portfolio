@@ -1,0 +1,80 @@
+<section class="selector-color">
+  <div class="content-selector-color">
+    <div class="boton-azul" onclick="selectColor('azul')"></div>
+    <div class="boton-rojo" onclick="selectColor('rojo')"></div>
+    <div class="boton-verde" onclick="selectColor('verde')"></div>
+    <div class="boton-morado" onclick="selectColor('morado')"></div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  function selectColor(element) {
+    // Cambiar el fondo
+    if (element === "rojo") {
+      document.documentElement.style.backgroundColor = "#0C0202";
+      document.documentElement.style.setProperty("--color-text", "#B50003"); // Cambiar la variable de color de texto
+      document.documentElement.style.setProperty("--color-lines", "#720002"); // Cambiar la variable de color de texto
+    } else if (element === "azul") {
+      document.documentElement.style.backgroundColor = "#020C0C";
+      document.documentElement.style.setProperty("--color-text", "#3C7CCF");
+      document.documentElement.style.setProperty("--color-lines", "#5978A0");
+    } else if (element === "verde") {
+      document.documentElement.style.backgroundColor = "#020C02";
+      document.documentElement.style.setProperty("--color-text", "#007408");
+      document.documentElement.style.setProperty("--color-lines", "#005D06");
+    } else if (element === "morado") {
+      document.documentElement.style.backgroundColor = "#08020C";
+      document.documentElement.style.setProperty("--color-text", "#5F007F");
+      document.documentElement.style.setProperty("--color-lines", "#69007E");
+    }
+  }
+</script>
+
+<style>
+  .selector-color {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2%;
+  }
+
+  .content-selector-color {
+    display: flex;
+    gap: 30px;
+    border-radius: 100px;
+    border: solid var(--color-lines); /* Ajustar a la variable si es necesario */
+    padding: 10px 1%;
+  }
+  .boton-morado,
+  .boton-rojo,
+  .boton-verde,
+  .boton-azul {
+    cursor: pointer;
+
+  }
+  .boton-morado,
+  .boton-rojo,
+  .boton-verde,
+  .boton-azul {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+  }
+
+  .boton-morado {
+    background-color: purple;
+  }
+
+  .boton-rojo {
+    background-color: rgb(149, 0, 0);
+  }
+
+  .boton-verde {
+    background-color: rgb(0, 103, 0);
+  }
+
+  .boton-azul {
+    background-color: blue;
+  }
+</style>

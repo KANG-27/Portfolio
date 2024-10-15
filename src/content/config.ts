@@ -6,8 +6,7 @@ const proyectsCollection = defineCollection({
       description: z.string(),
       tecnologies: z.array(
         z.object({
-          name: z.string(),
-          description: z.string(),
+          image: z.string().url(),
         })
       ),
       funcionality: z.array(
@@ -21,5 +20,5 @@ const proyectsCollection = defineCollection({
   });
 
 export const collections = {
-    proyectsCollection,
+    proyectos: proyectsCollection,
 }

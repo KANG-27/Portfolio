@@ -1,42 +1,18 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Experiencie from "../components/Experiencie.astro";
+import Contentmy from "../components/Contentmy.astro";
+import { getCollection } from "astro:content";
+import SelectColor from "../components/SelectColor.astro";
 
-const collectionProyects = await getCollection("proyectsCollection");
-
-console.log(collectionProyects);
+const collectionProyects = await getCollection("proyectos");
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout>
   <main>
-    <section class="selector-color">
-      <div class="content-selector-color">
-        <div class="boton-azul" onclick="selectColor('azul')"></div>
-        <div class="boton-rojo" onclick="selectColor('rojo')"></div>
-        <div class="boton-verde" onclick="selectColor('verde')"></div>
-        <div class="boton-morado" onclick="selectColor('morado')"></div>
-      </div>
-    </section>
+    <SelectColor />
     <section class="content-page">
-      <div class="content-person">
-        <div class="content-image">
-          <p class="bracket color-text">{"{"}</p>
-          <img src="foto.png" alt="Mi imagen" class="image" />
-          <p class="bracket color-text">{"}"}</p>
-        </div>
-        <div class="content-text">
-          <h1 class="name">Kevin Andres Niño <br /> Guerrero</h1>
-          <p class="color-text">Full-stack Developer</p>
-          <hr class="color-text line" />
-          <p class="">Redes de contacto:</p>
-          <div>
-            <!-- <img src="Instagram-Logosu.png" alt="" /> -->
-            <img src="linkedin.png" alt="" />
-            <img src="gmail.png" alt="" />
-          </div>
-        </div>
-      </div>
+      <Contentmy />
       <section class="content-info">
         <div class="content-card">
           <h2 class="color-text">
@@ -63,155 +39,211 @@ console.log(collectionProyects);
               resolver problemas complejos.
             </li>
           </ul>
+          <hr />
+          <div>
+            <h3>Tecnologias que utilizo:</h3>
+            <div class="logos-tecnologi">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/2048px-HTML5_logo_and_wordmark.svg.png"
+                alt="html"
+                width="35px"
+                height="35px"
+              />
+              <img
+                src="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/css3-512.png"
+                alt="css"
+                width="35px"
+                height="35px"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                alt="js"
+                width="35px"
+                height="35px"
+              />
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb6-sFktxWY-Dm8H7HlRmrYnfruYPipHcVQw&s"
+                alt="typescript"
+                width="35px"
+                height="35px"
+              />
+              <img
+                src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png"
+                alt="react"
+                width="35px"
+                height="35px"
+              />
+              <img
+                class="image-fond-wite"
+                src="https://koerber-supplychain.com/fileadmin/koerbersupplychain/Homepage/References/reference_next_logo.png"
+                alt="next"
+                width="60px"
+                height="35px"
+              />
+              <img
+                src="https://img.icons8.com/m_sharp/200/FFFFFF/github.png"
+                alt="git"
+                width="35px"
+                height="35px"
+              />
+              <img
+                src="https://astro.build/assets/press/astro-icon-light-gradient.png"
+                alt="astro"
+                width="30px"
+                height="35px"
+              />
+              <img
+                src="https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png"
+                alt="node"
+                width="30px"
+                height="35px"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
+                alt="figma"
+                width="30px"
+                height="35px"
+              />
+            </div>
+          </div>
         </div>
-        <h2 class="color-text">Mis proyectos</h2>
-        <div class="content-proyectos">
-          <div></div>
+        <div class="content-proyects">
+          <h2 class="color-text">Mis proyectos</h2>
+          <div class="content-proyectos">
+            {
+              collectionProyects.map((proyect) => (
+                <div class="content-card">
+                  <h1 class="color-text">{proyect.data.name}</h1>
+                  <p>{proyect.data.description}</p>
+                  <h3 class="color-text">Lenguajes</h3>
+                  {proyect.data.tecnologies.map((element) => (
+                    <img
+                      src={element.image}
+                      alt=""
+                      width="30px"
+                      height="35px"
+                    />
+                  ))}
+                  <a href={`/proyect/${proyect.slug}`}>
+                    <button>Conoce más...</button>
+                  </a>
+                </div>
+              ))
+            }
+          </div>
         </div>
-        <!-- conocimientos / experiencia -->
 
+        <!-- conocimientos / experiencia -->
         <Experiencie />
       </section>
     </section>
   </main>
 </Layout>
 
-<script type="text/javascript">
-  function selectColor(element) {
-    // Cambiar el fondo
-    if (element === "rojo") {
-      document.documentElement.style.backgroundColor = "#0C0202";
-      document.documentElement.style.setProperty("--color-text", "#B50003"); // Cambiar la variable de color de texto
-      document.documentElement.style.setProperty("--color-lines", "#720002"); // Cambiar la variable de color de texto
-    } else if (element === "azul") {
-      document.documentElement.style.backgroundColor = "#020C0C";
-      document.documentElement.style.setProperty("--color-text", "#3C7CCF");
-      document.documentElement.style.setProperty("--color-lines", "#5978A0");
-    } else if (element === "verde") {
-      document.documentElement.style.backgroundColor = "#020C02";
-      document.documentElement.style.setProperty("--color-text", "#007408");
-      document.documentElement.style.setProperty("--color-lines", "#005D06");
-    } else if (element === "morado") {
-      document.documentElement.style.backgroundColor = "#08020C";
-      document.documentElement.style.setProperty("--color-text", "#5F007F");
-      document.documentElement.style.setProperty("--color-lines", "#69007E");
-    }
-  }
-</script>
-
 <style>
+  .content-proyects{
+    margin-top: 5%;
+  }
+  .image-fond-wite {
+    background-color: white;
+  }
+  .logos-tecnologi {
+    display: flex;
+    gap: 15px;
+  }
+  p {
+    font-size: 20px;
+  }
+  .content-card button {
+    font-size: 20px;
+    padding: 3%;
+    color: white;
+    border: 0;
+    background-color: var(--color-lines);
+    border-radius: 30px;
+    margin: 2%;
+    width: 100%;
+
+    cursor: pointer;
+  }
+  .content-proyectos h3 {
+    margin: 3% 0%;
+    margin-bottom: 0%;
+  }
+  .content-proyectos p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .content-proyectos img {
+    margin: 5% 2%;
+  }
+  .content-proyectos h1 {
+    margin-top: 0%;
+  }
+  .content-proyectos {
+    margin: 5% 0%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
   .content-page {
     position: absolute;
   }
-  .name {
-    font-size: 30px;
-    margin: 0%;
-    margin-bottom: 5%;
-  }
+
   .content-info {
     margin-top: 5%;
-    width: 40%;
+    width: 55%;
     color: white;
   }
   .content-card hr {
     border: 1px solid var(--color-lines);
   }
   .content-card {
-    width: 100%;
-    padding: 5% 5%;
+    width: auto;
+    padding: 5%;
     border-radius: 20px;
     border: solid var(--color-lines);
   }
   .content-page {
     display: flex;
+    width: 100%;
   }
   p {
     margin: 0%;
   }
-  .line {
-    margin: 2% 0%;
-    width: 70%;
-    /* background-color: red; */
-    border: 1px solid var(--color-lines);
-  }
 
-  .boton-morado,
-  .boton-rojo,
-  .boton-verde,
-  .boton-azul {
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-  }
-
-  .boton-morado {
-    background-color: purple;
-  }
-
-  .boton-rojo {
-    background-color: rgb(149, 0, 0);
-  }
-
-  .boton-verde {
-    background-color: rgb(0, 103, 0);
-  }
-
-  .boton-azul {
-    background-color: blue;
-  }
-
-  .content-text {
-    display: flex;
-    flex-direction: column;
-    padding-left: 30%;
-    margin-top: 5%;
-    color: white; /* Este color se cambiará según la selección */
-  }
   div {
     position: static;
   }
 
-  .content-person {
-    width: 40%;
-    height: max-content;
-    position: sticky;
-    top: 5px;
+  @media (max-width: 768px) {
+    .content-page {
+      display: flex;
+      flex-direction: column;
+    }
+    .content-info {
+      margin: 0% 5%;
+      width: auto;
+    }
+    .logos-tecnologi {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
   }
-
-  .selector-color {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2%;
-  }
-
-  .content-selector-color {
-    display: flex;
-    gap: 30px;
-    border-radius: 100px;
-    border: solid var(--color-lines); /* Ajustar a la variable si es necesario */
-    padding: 10px 1%;
-  }
-
-  .content-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 8px;
-    position: relative;
-  }
-
-  .image {
-    margin-top: 15%;
-    width: 300px;
-    height: auto;
-  }
-
-  .bracket {
-    font-size: 300px;
-    line-height: 0;
-    margin: 0;
+  @media (max-width: 768px) {
+    p {
+      font-size: 12px !important;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 15px;
+    }
+    .content-proyectos {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 </style>

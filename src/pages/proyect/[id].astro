@@ -1,0 +1,92 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Contentmy from "../../components/Contentmy.astro";
+import SelectColor from "../../components/SelectColor.astro";
+
+export async function getStaticPaths() {
+  const collectionProyects = await getCollection("proyectos");
+
+  return collectionProyects.map((proyect) => ({
+    params: { id: proyect.slug }, // Cambia "slug" si tienes un campo diferente.
+    props: { proyect },
+  }));
+}
+
+// Obtener los props desde "Astro.props".
+const { proyect } = Astro.props;
+console.log(proyect);
+---
+
+<Layout>
+  <main>
+    <SelectColor />
+    <div class="content-page">
+      <Contentmy />
+      <div class="content-info">
+        <h1 class="color-text">{proyect.data.name}</h1>
+        <div class="content-card">
+          <h1 class="color-text">Descripción</h1>
+          <hr class="color-text" />
+          <p>{proyect.data.description}</p>
+          <h1 class="color-text">Funcionalidades</h1>
+          <hr class="color-text" />
+          <ul>
+            {
+              proyect.data.funcionality.map((funcionality) => (
+                <li>
+                  <h3>{funcionality.name}</h3>
+                  <p>{funcionality.description}</p>
+                </li>
+              ))
+            }
+          </ul>
+          <h1 class="color-text">Tecnologias usadas:</h1>
+          <hr class="color-text" />
+          <div class="content-tecnologies">
+            {
+              proyect.data.tecnologies.map((funcionality) => (
+                <img
+                  src={funcionality.image}
+                  alt=""
+                  width="33px"
+                  height="35px"
+                />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .content-tecnologies {
+    margin-top: 2%;
+    display: flex;
+    gap: 20px;
+  }
+  .content-card hr {
+    border: 1px solid var(--color-lines);
+  }
+  p {
+    color: white;
+  }
+  .content-info {
+    margin-top: 5%;
+    width: 55%;
+    color: white;
+  }
+  .content-page {
+    display: flex;
+    width: 100%;
+    margin-top: 5%;
+  }
+  .content-card {
+    width: auto;
+    padding: 5%;
+    border-radius: 20px;
+    border: solid var(--color-lines);
+  }
+</style>

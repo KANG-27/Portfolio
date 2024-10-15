@@ -188,18 +188,17 @@
 </script>
 
 <style>
-      .content-card hr {
+  .content-card hr {
     border: 1px solid var(--color-lines);
   }
   .content-card {
-    width: 100%;
+    width: auto;
     padding: 5% 5%;
     border-radius: 20px;
     border: solid var(--color-lines);
   }
   .container-tag {
     padding: 0% 5%;
-    width: 100%;
     display: flex;
     justify-content: center;
     gap: 60px;
@@ -281,5 +280,28 @@
   .selected-tag {
     background-color: var(--color-lines);
   }
-
+  @media (max-width: 768px) {
+    p {
+      font-size: 12px !important;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 15px;
+    }
+    .content-proyectos {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .container-tag h1{
+        font-size: 13px;
+    }
+    .container-tag {
+      gap: 5px;
+    }
+    .timeline {
+        margin-left: 0%;
+        padding-left: 3%;
+    }
+  }
 </style>
