@@ -1,7 +1,7 @@
 <div class="content-person">
   <div class="content-image">
     <p class="bracket color-text">{"{"}</p>
-    <img src="foto.png" alt="Mi imagen" class="image" />
+    <img src="/foto.png" alt="Mi imagen" class="image" />
     <p class="bracket color-text">{"}"}</p>
   </div>
   <div class="content-text">
@@ -9,14 +9,87 @@
     <p class="color-text">Full-stack Developer</p>
     <hr class="color-text line" />
     <p class="">Redes de contacto:</p>
-    <div>
-      <img src="linkedin.png" alt="" />
-      <img src="gmail.png" alt="" />
+    <div class="contact-img-contact">
+      <a href="https://www.linkedin.com/in/kevin-niño-guerrero/" target="_blank" rel="noopener noreferrer">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+          alt=""
+          width="30px"
+          height="30px"
+        />
+      </a>
+      <img
+        id="gmail"
+        src="https://mailmeteor.com/logos/assets/PNG/Gmail_Logo_512px.png"
+        alt=""
+        width="35px"
+        height="28px"
+      />
+      <div id="burbuja" class="burbuja">
+        <span>Copy</span>
+        <i>✓</i>
+        <br /><span>kevinandresrg@gmail.com</span>
+      </div>
+      <a href="https://github.com/KANG-27" target="_blank" rel="noopener noreferrer">
+        <img
+          src="https://img.icons8.com/m_sharp/200/FFFFFF/github.png"
+          alt=""
+          width="35px"
+          height="35px"
+        />
+      </a>
     </div>
   </div>
 </div>
 
+<script type="text/javascript">
+  const butonGmail = document.getElementById("gmail");
+  const burbuja = document.getElementById("burbuja");
+  butonGmail.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("kevinandresrg@gmail.com");
+      burbuja.style.display = "block";
+      burbuja.style.opacity = "1";
+
+      // Ocultar la burbuja después de 3 segundos
+      setTimeout(() => {
+        burbuja.style.opacity = "0";
+        setTimeout(() => {
+          burbuja.style.display = "none";
+        }, 200); // Esperar a que termine la transición de opacidad
+      }, 1000);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+</script>
+
 <style>
+  .burbuja {
+    display: none;
+    position: absolute;
+    top: -50px;
+    left: 20%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .contact-img-contact img {
+    cursor: pointer;
+  }
+  .contact-img-contact {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
   .name {
     font-size: 30px;
     margin: 0%;
@@ -61,8 +134,8 @@
       padding: 0% 3%;
       width: auto;
     }
-    .content-text{
-        padding-left: 15%;
+    .content-text {
+      padding-left: 15%;
     }
     .image {
       margin-top: 5%;
@@ -73,7 +146,7 @@
       font-size: 150px;
     }
     h1 {
-        font-size: 25px !important;
+      font-size: 25px !important;
     }
   }
   @media (max-width: 768px) {
@@ -84,15 +157,15 @@
     }
   }
   @media (max-width: 768px) {
-    p{
-        font-size: 12px !important;
+    p {
+      font-size: 12px !important;
     }
 
-    .content-image p{
-        font-size: 100px !important;
+    .content-image p {
+      font-size: 100px !important;
     }
 
-    .image{
+    .image {
       width: 150px;
     }
   }

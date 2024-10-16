@@ -151,9 +151,6 @@ const collectionProyects = await getCollection("proyectos");
     display: flex;
     gap: 15px;
   }
-  p {
-    font-size: 20px;
-  }
   .content-card button {
     font-size: 20px;
     padding: 3%;
@@ -163,7 +160,6 @@ const collectionProyects = await getCollection("proyectos");
     border-radius: 30px;
     margin: 2%;
     width: 100%;
-
     cursor: pointer;
   }
   .content-proyectos h3 {
@@ -221,7 +217,7 @@ const collectionProyects = await getCollection("proyectos");
   @media (max-width: 768px) {
     .content-page {
       display: flex;
-      flex-direction: column;
+      flex-direction: column !important;
     }
     .content-info {
       margin: 0% 5%;

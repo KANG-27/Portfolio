@@ -9,28 +9,30 @@
 
 <script type="text/javascript">
   function selectColor(element) {
+    const root = document.documentElement;
     // Cambiar el fondo
     if (element === "rojo") {
       document.documentElement.style.backgroundColor = "#0C0202";
-      document.documentElement.style.setProperty("--color-text", "#B50003"); // Cambiar la variable de color de texto
-      document.documentElement.style.setProperty("--color-lines", "#720002"); // Cambiar la variable de color de texto
+      root.style.setProperty("--color-text", "#B50003"); // Cambiar la variable de color de texto
+      root.style.setProperty("--color-lines", "#720002"); // Cambiar la variable de color de texto
     } else if (element === "azul") {
-      document.documentElement.style.backgroundColor = "#020C0C";
-      document.documentElement.style.setProperty("--color-text", "#3C7CCF");
-      document.documentElement.style.setProperty("--color-lines", "#5978A0");
+      root.style.backgroundColor = "#020C0C";
+      root.style.setProperty("--color-text", "#3C7CCF");
+      root.style.setProperty("--color-lines", "#5978A0");
     } else if (element === "verde") {
-      document.documentElement.style.backgroundColor = "#020C02";
-      document.documentElement.style.setProperty("--color-text", "#007408");
-      document.documentElement.style.setProperty("--color-lines", "#005D06");
+      root.style.backgroundColor = "#020C02";
+      root.style.setProperty("--color-text", "#007408");
+      root.style.setProperty("--color-lines", "#005D06");
     } else if (element === "morado") {
-      document.documentElement.style.backgroundColor = "#08020C";
-      document.documentElement.style.setProperty("--color-text", "#5F007F");
-      document.documentElement.style.setProperty("--color-lines", "#69007E");
+      root.style.backgroundColor = "#08020C";
+      root.style.setProperty("--color-text", "#5F007F");
+      root.style.setProperty("--color-lines", "#69007E");
     }
   }
 </script>
 
 <style>
+
   .selector-color {
     width: 100%;
     display: flex;
@@ -46,13 +48,7 @@
     border: solid var(--color-lines); /* Ajustar a la variable si es necesario */
     padding: 10px 1%;
   }
-  .boton-morado,
-  .boton-rojo,
-  .boton-verde,
-  .boton-azul {
-    cursor: pointer;
-
-  }
+ 
   .boton-morado,
   .boton-rojo,
   .boton-verde,
@@ -60,6 +56,9 @@
     width: 30px;
     height: 30px;
     border-radius: 100%;
+    cursor: pointer;
+    transition: color 1s ease;
+    transition: background-color 3s ease, color 3s ease;
   }
 
   .boton-morado {
